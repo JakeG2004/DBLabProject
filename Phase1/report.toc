@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Project Plan}{2}{}%
+\contentsline {section}{\numberline {2}Technology Stack}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Backend}{2}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Language}{2}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Libraries}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Database}{2}{}%
+\contentsline {section}{\numberline {3}Division of Labor}{2}{}%
+\contentsline {section}{\numberline {4}ER Diagram}{3}{}%
+\contentsline {section}{\numberline {5}Timeline of Deliverables}{3}{}%

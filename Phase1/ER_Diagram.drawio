@@ -1,0 +1,90 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.2 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.2">
+  <diagram name="Page-1" id="LgAd5svGr0UufP2-nG5y">
+    <mxGraphModel dx="277" dy="755" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-23" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="hNB2qBjKQi1vim-V85cJ-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-26" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="hNB2qBjKQi1vim-V85cJ-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="270" />
+              <mxPoint x="310" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Student" vertex="1">
+          <mxGeometry height="60" width="120" x="171" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-5" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Vandal #" vertex="1">
+          <mxGeometry height="40" width="120" x="171" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-7" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="First Name" vertex="1">
+          <mxGeometry height="40" width="120" x="31" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-6" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Last Name" vertex="1">
+          <mxGeometry height="40" width="120" x="171" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-25" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Clothing Piece" vertex="1">
+          <mxGeometry height="60" width="120" x="530" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-12" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Type" vertex="1">
+          <mxGeometry height="40" width="120" x="530" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-13" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Size" vertex="1">
+          <mxGeometry height="40" width="120" x="670" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-14" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-11" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="ID" vertex="1">
+          <mxGeometry height="40" width="120" x="530" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-27" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Instrument" vertex="1">
+          <mxGeometry height="60" width="120" x="530" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-20" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-17" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Type" vertex="1">
+          <mxGeometry height="40" width="120" x="670" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-19" edge="1" parent="1" source="hNB2qBjKQi1vim-V85cJ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hNB2qBjKQi1vim-V85cJ-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-18" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="ID" vertex="1">
+          <mxGeometry height="40" width="120" x="530" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-21" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Has Clothing" vertex="1">
+          <mxGeometry height="80" width="150" x="330" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="hNB2qBjKQi1vim-V85cJ-22" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Has Instrument" vertex="1">
+          <mxGeometry height="80" width="150" x="330" y="420" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
