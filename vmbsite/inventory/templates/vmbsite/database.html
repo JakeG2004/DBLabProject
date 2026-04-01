@@ -15,7 +15,7 @@
     <table class="table">
     <thead>
         <tr>
-        <th scope="col">DB Name</th>
+        <th scope="col">Table Name</th>
         <th scope="col"># of Entries</th>
         <th scope="col"></th>
         </tr>
@@ -27,14 +27,24 @@
             <td><a href="{% url 'vmb:member_db' %}" type="button" id="submit-btn" class="btn btn-primary w-100">View</a></td>
         </tr>
         <tr>
-            <td>Uniform</td>
+            <td>Uniform Inventory</td>
             <td>13</td>
             <td><a href="{% url 'vmb:uniform_db' %}" type="button" id="submit-btn" class="btn btn-primary w-100">View</a></td>
         </tr>
         <tr>
-            <td>Instrument</td>
+            <td>Instrument Inventory</td>
             <td>2</td>
             <td><a href="{% url 'vmb:instrument_db' %}" type="button" id="submit-btn" class="btn btn-primary w-100">View</a></td>
+        </tr>
+        <tr>
+            <td>Instrument Rental</td>
+            <td>2</td>
+            <td><a href="{% url 'vmb:instrument_rental_db' %}" type="button" id="submit-btn" class="btn btn-primary w-100">View</a></td>
+        </tr>
+        <tr>
+            <td>Uniform Rental</td>
+            <td>2</td>
+            <td><a href="{% url 'vmb:uniform_rental_db' %}" type="button" id="submit-btn" class="btn btn-primary w-100">View</a></td>
         </tr>
     </tbody>
     </table>

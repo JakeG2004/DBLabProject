@@ -11,5 +11,7 @@ urlpatterns = [
     path("database/", views.database, name="database"),
     path("database/member_db/", views.member_db, name="member_db"),
     path("database/uniform_db/", views.uniform_db, name="uniform_db"),
+    path("database/uniform_rental_db", views.uniform_rental_db, name="uniform_rental_db"),
     path("database/instrument_db/", views.instrument_db, name="instrument_db"),
+    path("database/instrument_rental_db", views.instrument_rental_db, name="instrument_rental_db"),
 ]

@@ -51,3 +51,15 @@ def instrument_db(request):
         pass
 
     return render(request, "vmbsite/instrument_db.html")
+
+def instrument_rental_db(request):
+    if(request.method == 'POST'):
+        pass
+
+    return render(request, "vmbsite/instrument_rental_db.html")
+
+def uniform_rental_db(request):
+    if(request.method == 'POST'):
+        pass
+
+    return render(request, "vmbsite/instrument_db.html")

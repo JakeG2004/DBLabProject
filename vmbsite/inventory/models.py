@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.contrib import admin
 
 class Member(models.Model):
-    vandal_number = models.CharField(max_length=16)
+    vandal_number = models.CharField(max_length=16, primary_key=True)
     last_name = models.CharField(max_length=64)
     first_name = models.CharField(max_length=64)
 
@@ -31,7 +31,7 @@ CLOTHING_CHOICES = [
 ]
 
 class Uniform_Piece(models.Model):
-    clothing_id = models.IntegerField()
+    clothing_id = models.CharField(max_length=16, primary_key=True)
     size = models.CharField(max_length=32)
     clothing_type = models.CharField(
         max_length=32,
@@ -44,8 +44,31 @@ class Uniform_Piece(models.Model):
 
 class Instrument(models.Model):
     instrument_type = models.CharField(max_length=32)
-    instrument_id = models.CharField(max_length=32)
+    instrument_id = models.CharField(max_length=32, primary_key=True)
     notes = models.CharField(max_length=128)
 
     def __str__(self):
         return f"{self.instrument_type}"
+
+class Rents_Uniform(models.Model):
+    vandal_number = models.ForeignKey(Member, on_delete=models.CASCADE)
+    uniform_id = models.ForeignKey(Uniform_Piece, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.vandal_number}"
+
+    class Meta:
+            # This creates a unique constraint on the pair, effectively acting as a composite PK
+            constraints = [
+                models.UniqueConstraint(fields=['vandal_number', 'uniform_id'], name='unique_uniform_rental')
+            ]
+
+class Rents_Instrument(models.Model):
+    vandal_number = models.ForeignKey(Member, on_delete=models.CASCADE)
+    instrument_id = models.ForeignKey(Instrument, on_delete=models.CASCADE)
+
+    class Meta:
+            # This creates a unique constraint on the pair, effectively acting as a composite PK
+            constraints = [
+                models.UniqueConstraint(fields=['vandal_number', 'instrument_id'], name='unique_instrument_rental')
+            ]
