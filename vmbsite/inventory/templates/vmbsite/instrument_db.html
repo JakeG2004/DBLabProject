@@ -1,0 +1,110 @@
+{% extends "vmbsite/base.html" %}
+
+{% block title %}Instrument DB{% endblock %}
+
+{% load static %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="display-4">Instrument DB</h1>
+    </div>
+</div>
+
+<div class="row">
+    <form id="member-form">
+        {% csrf_token %}
+        <div class="d-flex gap-2 align-items-center">
+            <input type="text" id="search_box" class="form-control w-50" name="search_box" placeholder="ID or Instrument Type">
+            <button type="button" id="submit-btn" class="btn btn-primary w-25">Search</button>
+            <button type="button" class="btn btn-success w-25" data-bs-toggle="modal" data-bs-target="#addInstrumentModal">
+                Add
+            </button>
+        </div>
+    </form>
+</div>
+
+<hr>
+
+<div class="row">
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Instrument Type</th>
+        <th scope="col">ID</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" name="inst_type_1" class="form-control" value="Drum"></td>
+            <td><input type="text" name="inst_id_1" class="form-control" value="D001"></td>
+            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
+            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="inst_type_2" class="form-control" value="Trumpet"></td>
+            <td><input type="text" name="inst_id_2" class="form-control" value="TP01"></td>
+            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
+            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="inst_type_3" class="form-control" value="F Mellophone"></td>
+            <td><input type="text" name="inst_id_3" class="form-control" value="MF01"></td>
+            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
+            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="addInstrumentModal" tabindex="-1" aria-labelledby="addInstrumentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addInstrumentModalLabel">Add New Instrument</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST" action="{% url 'vmb:instrument_db' %}">
+        {% csrf_token %}
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="instrument_type" class="form-label">Uniform Type</label>
+            <select class="form-select" id="uniform_type" name="instrument_type" required>
+              <option value="" selected disabled>Select type...</option>
+              <option value="Piccolo">Piccolo</option>
+              <option value="Flute">Flute</option>
+              <option value="Clarinet">Clarinet</option>
+              <option value="Alto_Sax">Alto Sax</option>
+              <option value="Tenor_Sax">Tenor Sax</option>
+              <option value="Bari_Sax">Bari Sax</option>
+              <option value="Bass_Clarinet">Bass Clarinet</option>
+              <option value="Trumpet">Trumpet</option>
+              <option value="F_Mellophone">F Mellophone</option>
+              <option value="Bb_Mellophone">Bb Mellophone</option>
+              <option value="Trombone">Trombone</option>
+              <option value="Baritone">Baritone</option>
+              <option value="Tuba">Tuba</option>
+              <option value="Drum">Drum</option>
+              <option value="Flag">Flag</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="inst_id" class="form-label">Instrument ID</label>
+            <input type="text" class="form-control" id="inst_id" name="inst_id" placeholder="e.g. TP01" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" name="add_instrument" class="btn btn-success">Save Instrument</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

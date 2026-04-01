@@ -1,0 +1,26 @@
+{% extends "vmbsite/base.html" %}
+
+{% block title %}Instrument{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="display-4">Instrument Rental</h1>
+        <form>
+        <div class="form-group">
+            <label for="vandalNumber">Vandal #</label>
+            <input type="text" class="form-control" id="vandalNumber" placeholder="Enter Vandal Number" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="instID">Instrument ID</label>
+            <input type="text" class="form-control" id="instID" placeholder="Enter Instrument ID" required>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

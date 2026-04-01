@@ -1,0 +1,47 @@
+{% extends "vmbsite/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="display-4">Welcome to the VMB Inventory Site!</h1>
+        <p class="lead">Manage students, uniforms, and instruments from a single interface.</p>
+
+        <a href="{% url 'vmb:login' %}" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</div>
+
+<hr>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Rent</h5>
+                <p class="card-text">Rent instruments and uniforms to students.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Search</h5>
+                <p class="card-text">Search for students, uniforms, or instruments.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Scalable</h5>
+                <p class="card-text">Boundless uniforms, members, or instruments.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
