@@ -5,9 +5,19 @@
 {% load static %}
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/members.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
 
 <div class="row">
     <div class="col-md-8 mx-auto text-center">
@@ -20,7 +30,7 @@
         {% csrf_token %}
         <div class="d-flex gap-2 align-items-center">
             <input type="text" id="search_box" class="form-control w-50" name="search_box" placeholder="Vandal #, First Name, or Last Name">
-            <button type="button" id="submit-btn" class="btn btn-primary w-25">Search</button>
+            <button type="submit" id="submit-btn" class="btn btn-primary w-25">Search</button>
             <button type="button" class="btn btn-success w-25" data-bs-toggle="modal" data-bs-target="#addMemberModal">
                 Add
             </button>
@@ -42,27 +52,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><input type="text" name="vandal_id_1" class="form-control" value="V000001"></td>
-            <td><input type="text" name="first_name_1" class="form-control" value="Jake"></td>
-            <td><input type="text" name="last_name_1" class="form-control" value="Gendreau"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+        {% for member in members %}
+        <tr data-id="{{ member.vandal_number }}">
+            <td>{{ member.vandal_number }}</td>
+            <td><input type="text" class="form-control first-name" value="{{ member.first_name }}"></td>
+            <td><input type="text" class="form-control last-name" value="{{ member.last_name }}"></td>
+            <td><button class="btn btn-primary update-btn w-100">Apply</button></td>
+            <td><button class="btn btn-danger delete-btn w-100">Delete</button></td>
         </tr>
+        {% empty %}
         <tr>
-            <td><input type="text" name="vandal_id_2" class="form-control" value="V0000000"></td>
-            <td><input type="text" name="first_name_2" class="form-control" value="Michael"></td>
-            <td><input type="text" name="last_name_2" class="form-control" value="Crapse"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+            <td colspan="5" class="text-center text-muted">No members found in the database.</td>
         </tr>
-        <tr>
-            <td><input type="text" name="vandal_id_3" class="form-control" value="V00000002"></td>
-            <td><input type="text" name="first_name_3" class="form-control" value="Joe"></td>
-            <td><input type="text" name="last_name_3" class="form-control" value="Vandal"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
-        </tr>
+        {% endfor %}
     </tbody>
     </table>
 </div>

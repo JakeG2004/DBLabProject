@@ -52,23 +52,11 @@ class Instrument(models.Model):
 
 class Rents_Uniform(models.Model):
     vandal_number = models.ForeignKey(Member, on_delete=models.CASCADE)
-    uniform_id = models.ForeignKey(Uniform_Piece, on_delete=models.CASCADE)
+    uniform_id = models.ForeignKey(Uniform_Piece, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
         return f"{self.vandal_number}"
 
-    class Meta:
-            # This creates a unique constraint on the pair, effectively acting as a composite PK
-            constraints = [
-                models.UniqueConstraint(fields=['vandal_number', 'uniform_id'], name='unique_uniform_rental')
-            ]
-
 class Rents_Instrument(models.Model):
     vandal_number = models.ForeignKey(Member, on_delete=models.CASCADE)
-    instrument_id = models.ForeignKey(Instrument, on_delete=models.CASCADE)
-
-    class Meta:
-            # This creates a unique constraint on the pair, effectively acting as a composite PK
-            constraints = [
-                models.UniqueConstraint(fields=['vandal_number', 'instrument_id'], name='unique_instrument_rental')
-            ]
+    instrument_id = models.ForeignKey(Instrument, on_delete=models.CASCADE, primary_key=True)

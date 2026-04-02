@@ -14,4 +14,6 @@ urlpatterns = [
     path("database/uniform_rental_db", views.uniform_rental_db, name="uniform_rental_db"),
     path("database/instrument_db/", views.instrument_db, name="instrument_db"),
     path("database/instrument_rental_db", views.instrument_rental_db, name="instrument_rental_db"),
+    path('member/update/<str:pk>/', views.update_member, name='update_member'),
+    path('member/delete/<str:pk>/', views.delete_member, name='delete_member'),
 ]
