@@ -15,9 +15,17 @@ class InstrumentAdmin(admin.ModelAdmin):
     list_filter = ["instrument_type"]
     search_fields = ["instrument_type", "instrument_id"]
 
+class InstrumentRentalAdmin(admin.ModelAdmin):
+    list_display = ["vandal_number", "instrument_id"]
+    search_fields = ["vandal_number", "instrument_id"]
+
+class UniformRentalAdmin(admin.ModelAdmin):
+    list_display = ["vandal_number", "uniform_id"]
+    search_fields = ["vandal_number", "uniform_id"]
+
 admin.site.register(Member, MemberAdmin)
 admin.site.register(Uniform_Piece, UniformAdmin)
 admin.site.register(Instrument, InstrumentAdmin)
-admin.site.register(Rents_Instrument)
-admin.site.register(Rents_Uniform)
+admin.site.register(Rents_Instrument, InstrumentRentalAdmin)
+admin.site.register(Rents_Uniform, UniformRentalAdmin)
 

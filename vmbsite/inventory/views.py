@@ -86,13 +86,40 @@ def instrument_db(request):
 def instrument_rental_db(request):
     rentals = Rents_Instrument.objects.select_related('vandal_number', 'instrument_id').all()
 
+    # Handle search
+    query = request.GET.get('search_box', '').strip()
+    if query:
+        rentals = rentals.filter(
+            # Search Member fields
+            Q(vandal_number__vandal_number__icontains=query) | 
+            Q(vandal_number__first_name__icontains=query) | 
+            Q(vandal_number__last_name__icontains=query) |
+            
+            # Search Instrument fields
+            Q(instrument_id__instrument_id__icontains=query) | 
+            Q(instrument_id__instrument_type__icontains=query)
+        )
+
     return render(request, "vmbsite/instrument_rental_db.html", {'rentals': rentals})
 
 def uniform_rental_db(request):
-    if(request.method == 'POST'):
-        pass
+    rentals = Rents_Uniform.objects.select_related('vandal_number', 'uniform_id').all()
 
-    return render(request, "vmbsite/instrument_db.html")
+    # Handle search
+    query = request.GET.get('search_box', '').strip()
+    if query:
+        rentals = rentals.filter(
+            # Search Member fields
+            Q(vandal_number__vandal_number__icontains=query) | 
+            Q(vandal_number__first_name__icontains=query) | 
+            Q(vandal_number__last_name__icontains=query) |
+            
+            # Search Instrument fields
+            Q(uniform_id__clothing_id__icontains=query) | 
+            Q(uniform_id__clothing_type__icontains=query)
+        )
+
+    return render(request, "vmbsite/uniform_rental_db.html", {'rentals': rentals})
 
 # Member API endpoints
 @require_POST
