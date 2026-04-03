@@ -3,9 +3,6 @@
 {% block title %}Instrument Rental DB{% endblock %}
 
 {% load static %}
-{% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-{% endblock %}
 
 {% block content %}
 
@@ -33,43 +30,28 @@
         <tr>
         <th scope="col">Vandal #</th>
         <th scope="col">First Name</th>
-        <th sctop="col">Last Name</th>
+        <th scope="col">Last Name</th>
         <th scope="col">Instrument ID</th>
         <th scope="col">Instrument Type</th>
         <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><input type="text" name="vandal_num_1" class="form-control" value="V000001" readonly></td>
-            <td><input type="text" name="first_name_1" class="form-control" value="Jake" readonly></td>
-            <td><input type="text" name="last_name_1" class="form-control" value="Gendreau" readonly></td>
-            <td><input type="text" name="inst_id_1" class="form-control" value="D001" readonly></td>
-            <td><input type="text" name="inst_type_1" class="form-control" value="Drum" readonly></td>
-            <td class="d-flex gap-1">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </td>
+        {% for rental in rentals %}
+        <tr data-id="{{ rental.instrument_id.pk }}">
+            <td>{{ rental.vandal_number.vandal_number }}</td>
+            <td>{{ rental.vandal_number.first_name }}</td>
+            <td>{{ rental.vandal_number.last_name }}</td>
+            
+            <td>{{ rental.instrument_id.instrument_id }}</td>
+            <td>{{ rental.instrument_id.instrument_type }}</td>
+            <td><button class="btn btn-danger delete-btn w-100">Delete</button></td>
         </tr>
+        {% empty %}
         <tr>
-            <td><input type="text" name="vandal_num_2" class="form-control" value="V0000000" readonly></td>
-            <td><input type="text" name="first_name_2" class="form-control" value="Michael" readonly></td>
-            <td><input type="text" name="last_name_2" class="form-control" value="Crapse" readonly></td>
-            <td><input type="text" name="inst_id_2" class="form-control" value="TP01" readonly></td>
-            <td><input type="text" name="inst_type_2" class="form-control" value="Trumpet" readonly></td>
-            <td class="d-flex gap-1">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </td>
+            <td colspan="5" class="text-center text-muted">No Instrument Rentals found in the database.</td>
         </tr>
-        <tr>
-            <td><input type="text" name="vandal_num_3" class="form-control" value="V00000002" readonly></td>
-            <td><input type="text" name="first_name_3" class="form-control" value="Joe" readonly></td>
-            <td><input type="text" name="last_name_3" class="form-control" value="Vandal" readonly></td>
-            <td><input type="text" name="inst_id_3" class="form-control" value="MF01" readonly></td>
-            <td><input type="text" name="inst_type_3" class="form-control" value="F Mellophone" readonly></td>
-            <td class="d-flex gap-1">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </td>
-        </tr>
+        {% endfor %}
     </tbody>
     </table>
 </div>

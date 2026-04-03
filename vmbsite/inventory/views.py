@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.views.decorators.http import require_POST
 from django.db.models import Q
-from .models import Member, Uniform_Piece, Instrument
+from .models import Member, Uniform_Piece, Instrument, Rents_Uniform, Rents_Instrument
 import json
 
 # Basic pages
@@ -84,10 +84,9 @@ def instrument_db(request):
     return render(request, "vmbsite/instrument_db.html", {'instruments': instruments})
 
 def instrument_rental_db(request):
-    if(request.method == 'POST'):
-        pass
+    rentals = Rents_Instrument.objects.select_related('vandal_number', 'instrument_id').all()
 
-    return render(request, "vmbsite/instrument_rental_db.html")
+    return render(request, "vmbsite/instrument_rental_db.html", {'rentals': rentals})
 
 def uniform_rental_db(request):
     if(request.method == 'POST'):

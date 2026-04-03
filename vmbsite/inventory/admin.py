@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Member, Uniform_Piece, Instrument
+from .models import Member, Uniform_Piece, Instrument, Rents_Instrument, Rents_Uniform
 
 class MemberAdmin(admin.ModelAdmin):
     list_display = ["last_name", "first_name", "vandal_number"]
@@ -18,4 +18,6 @@ class InstrumentAdmin(admin.ModelAdmin):
 admin.site.register(Member, MemberAdmin)
 admin.site.register(Uniform_Piece, UniformAdmin)
 admin.site.register(Instrument, InstrumentAdmin)
+admin.site.register(Rents_Instrument)
+admin.site.register(Rents_Uniform)
 
