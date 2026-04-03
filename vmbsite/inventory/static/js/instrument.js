@@ -6,14 +6,14 @@ document.addEventListener('click', function (event) {
     if (!isUpdate && !isDelete) return;
 
     const row = event.target.closest('tr');
-    const uniformId = row.getAttribute('data-id');
+    const instrumentId = row.getAttribute('data-id');
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     // --- HANDLE DELETE ---
     if (isDelete) {
         if (!confirm("Are you sure?")) return;
 
-        fetch(`/vmb/uniform/delete/${uniformId}/`, {
+        fetch(`/vmb/instrument/delete/${instrumentId}/`, {
             method: 'POST',
             headers: { 'X-CSRFToken': csrftoken }
         }).then(response => {
@@ -23,21 +23,21 @@ document.addEventListener('click', function (event) {
 
     // --- HANDLE UPDATE ---
     if (isUpdate) {
-        const clothingType = row.querySelector('.clothing-type').value;
-        const clothingSize = row.querySelector('.clothing-size').value;
+        const instrumentType = row.querySelector('.instrument-type').value;
+        const instrumentNotes = row.querySelector('.instrument-notes').value;
 
-        fetch(`/vmb/uniform/update/${uniformId}/`, {
+        fetch(`/vmb/instrument/update/${instrumentId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrftoken
             },
             body: JSON.stringify({
-                'clothing_type': clothingType,
-                'clothing_size': clothingSize
+                'instrument_type': instrumentType,
+                'instrument_notes': instrumentNotes
             })
         }).then(response => {
-            if (response.ok) alert("Uniform updated!");
+            if (response.ok) alert("Instrument updated!");
         });
     }
 });

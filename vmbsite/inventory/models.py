@@ -40,7 +40,7 @@ class Uniform_Piece(models.Model):
     notes = models.CharField(max_length=128)
 
     def __str__(self):
-        return f"{self.clothing_type}"
+        return f"{self.clothing_id}"
 
 class Instrument(models.Model):
     instrument_type = models.CharField(max_length=32)

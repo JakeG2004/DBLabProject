@@ -3,9 +3,6 @@
 {% block title %}Instrument Inventory DB{% endblock %}
 
 {% load static %}
-{% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-{% endblock %}
 
 {% block content %}
 
@@ -34,31 +31,27 @@
     <table class="table">
     <thead>
         <tr>
+        <th scope="col">Instrument #</th>
         <th scope="col">Instrument Type</th>
-        <th scope="col">ID</th>
+        <th scope="col">Instrument Notes</th>
         <th scope="col"></th>
         <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><input type="text" name="inst_type_1" class="form-control" value="Drum"></td>
-            <td><input type="text" name="inst_id_1" class="form-control" value="D001"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+        {% for instrument in instruments %}
+        <tr data-id="{{ instrument.instrument_id }}">
+            <td>{{ instrument.instrument_id }}</td>
+            <td><input type="text" class="form-control instrument-type" value="{{ instrument.instrument_type }}"></td>
+            <td><input type="text" class="form-control instrument-notes" value="{{ instrument.notes }}"></td>
+            <td><button class="btn btn-primary update-btn w-100">Apply</button></td>
+            <td><button class="btn btn-danger delete-btn w-100">Delete</button></td>
         </tr>
+        {% empty %}
         <tr>
-            <td><input type="text" name="inst_type_2" class="form-control" value="Trumpet"></td>
-            <td><input type="text" name="inst_id_2" class="form-control" value="TP01"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+            <td colspan="5" class="text-center text-muted">No instruments found in the database.</td>
         </tr>
-        <tr>
-            <td><input type="text" name="inst_type_3" class="form-control" value="F Mellophone"></td>
-            <td><input type="text" name="inst_id_3" class="form-control" value="MF01"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
-        </tr>
+        {% endfor %}
     </tbody>
     </table>
 </div>
@@ -70,7 +63,7 @@
         <h5 class="modal-title" id="addInstrumentModalLabel">Add New Instrument</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form method="POST" action="{% url 'vmb:instrument_db' %}">
+      <form method="POST" action="{% url 'vmb:add_instrument' %}">
         {% csrf_token %}
         <div class="modal-body">
           <div class="mb-3">
@@ -98,6 +91,10 @@
             <label for="inst_id" class="form-label">Instrument ID</label>
             <input type="text" class="form-control" id="inst_id" name="inst_id" placeholder="e.g. TP01" required>
           </div>
+          <div class="mb-3">
+            <label for="instrument_notes" class="form-label">Instrument Notes</label>
+            <input type="text" class="form-control" id="instrument_notes" name="instrument_notes" placeholder="Dented">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -107,4 +104,8 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/instrument.js' %}"></script>
 {% endblock %}

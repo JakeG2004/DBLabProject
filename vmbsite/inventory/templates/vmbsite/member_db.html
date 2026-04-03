@@ -3,21 +3,8 @@
 {% block title %}Member DB{% endblock %}
 
 {% load static %}
-{% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{% static 'js/members.js' %}"></script>
-{% endblock %}
 
 {% block content %}
-
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
-{% endif %}
 
 <div class="row">
     <div class="col-md-8 mx-auto text-center">
@@ -76,7 +63,7 @@
         <h5 class="modal-title" id="addMemberModalLabel">Add New Member</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form method="POST" action="{% url 'vmb:member_db' %}">
+      <form method="POST" action="{% url 'vmb:add_member' %}">
         {% csrf_token %}
         <div class="modal-body">
           <div class="mb-3">
@@ -100,4 +87,8 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/members.js' %}"></script>
 {% endblock %}

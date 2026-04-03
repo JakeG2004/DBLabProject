@@ -3,9 +3,6 @@
 {% block title %}Uniform Inventory DB{% endblock %}
 
 {% load static %}
-{% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-{% endblock %}
 
 {% block content %}
 
@@ -34,35 +31,27 @@
     <table class="table">
     <thead>
         <tr>
-        <th scope="col">Uniform Type</th>
         <th scope="col">ID</th>
+        <th scope="col">Clothing Type</th>
         <th scope="col">Size</th>
         <th scope="col"></th>
         <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><input type="text" name="uniform_type_1" class="form-control" value="Shako"></td>
-            <td><input type="text" name="uniform_id_1" class="form-control" value="M32"></td>
-            <td><input type="text" name="uniform_size_1" class="form-control" value="Medium"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+        {% for uniform in uniforms %}
+        <tr data-id="{{ uniform.clothing_id }}">
+            <td>{{ uniform.clothing_id }}</td>
+            <td><input type="text" class="form-control clothing-type" value="{{ uniform.clothing_type }}"></td>
+            <td><input type="text" class="form-control clothing-size" value="{{ uniform.size }}"></td>
+            <td><button class="btn btn-primary update-btn w-100">Apply</button></td>
+            <td><button class="btn btn-danger delete-btn w-100">Delete</button></td>
         </tr>
+        {% empty %}
         <tr>
-            <td><input type="text" name="uniform_type_2" class="form-control" value="Jacket"></td>
-            <td><input type="text" name="uniform_id_2" class="form-control" value="12345"></td>
-            <td><input type="text" name="uniform_size_2" class="form-control" value="44L"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
+            <td colspan="5" class="text-center text-muted">No uniform pieces found in the database.</td>
         </tr>
-        <tr>
-            <td><input type="text" name="uniform_type_3" class="form-control" value="Pants"></td>
-            <td><input type="text" name="uniform_id_3" class="form-control" value="23456"></td>
-            <td><input type="text" name="uniform_size_3" class="form-control" value="34L"></td>
-            <td><button type="submit" class="btn btn-primary w-100">Apply</button></td>
-            <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
-        </tr>
+        {% endfor %}
     </tbody>
     </table>
 </div>
@@ -74,7 +63,7 @@
         <h5 class="modal-title" id="addUniformModalLabel">Add New Uniform Item</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form method="POST" action="{% url 'vmb:uniform_db' %}">
+      <form method="POST" action="{% url 'vmb:add_uniform' %}">
         {% csrf_token %}
         <div class="modal-body">
           <div class="mb-3">
@@ -107,4 +96,8 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/uniform.js' %}"></script>
 {% endblock %}
