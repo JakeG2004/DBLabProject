@@ -2,25 +2,38 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout
 from django.db.models import Q
 from .models import Member, Uniform_Piece, Instrument, Rents_Uniform, Rents_Instrument
+from .forms import SignInForm, SignUpForm
 import json
 
 # Basic pages
 def index(request):
     return render(request, "vmbsite/index.html")
 
-def login(request):
-    if(request.method == 'POST'):
-        pass
+def login_view(request):
+    form = SignInForm(request, data=request.POST if request.method == 'POST' else None)
+    if form.is_valid():
+        login(request, form.get_user())
+        return redirect('vmb:index')
 
-    return render(request, "vmbsite/login.html")
+    return render(request, 'vmbsite/login.html', {'form': form})
 
-def signup(request):
-    if(request.method == 'POST'):
-        pass
+def signup_view(request):
+    form = SignUpForm(data=request.POST if request.method == 'POST' else None)
+    if form.is_valid():
+        user = form.save()
+        login(request, user)
+        return redirect('vmb:index')
 
-    return render(request, "vmbsite/signup.html")
+    return render(request, 'vmbsite/signup.html', {'form': form})
+
+@login_required()
+def logout_view(request):
+    logout(request)
+    return redirect('vmb:login')
 
 # Easy access rental pages
 def instrument(request):

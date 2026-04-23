@@ -10,7 +10,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navmenu">
-      <ul class="navbar-nav ms-auto">
+
+      <!-- LEFT SIDE -->
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'vmb:database' %}">Database</a>
         </li>
@@ -22,11 +25,27 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'vmb:instrument' %}">Instrument</a>
         </li>
+        {% endif %}
+      </ul>
 
+      <!-- RIGHT SIDE -->
+      <ul class="navbar-nav ms-auto align-items-center">
+        {% if user.is_authenticated %}
+        <li class="nav-item me-3">
+          <span class="nav-link fw-bold text-warning fs-4 border border-warning rounded px-2 py-1">
+            {{ user.username }}
+          </span>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'vmb:logout' %}" class="nav-link text-light small">Logout</a>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a href="{% url 'vmb:login' %}" class="btn btn-primary">Login</a>
         </li>
+        {% endif %}
       </ul>
+
     </div>
   </div>
 </nav>

@@ -5,8 +5,9 @@ app_name = "vmb"
 urlpatterns = [
     # Basic pages
     path("", views.index, name="index"),
-    path("login/", views.login, name="login"),
-    path("signup/", views.signup, name="signup"),
+    path("login/", views.login_view, name="login"),
+    path("signup/", views.signup_view, name="signup"),
+    path("logout/", views.logout_view, name="logout"),
     path("instrument/", views.instrument, name="instrument"),
     path("uniform/", views.uniform, name="uniform"),
 
