@@ -1,0 +1,27 @@
+{% extends "vmbsite/base.html" %}
+
+{% block title %}Import Uniform{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="display-4">Import Uniform CSV</h1>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-control col-md-8">
+                <div class="md-12">
+                    <label for="formFile" class="form-label">Uniform CSV File Upload</label>
+                    <input name="file" class="form-control" type="file" id="formFile" accept=".csv">
+                </div>
+                <br>
+                <div class="md-12">
+                    <button type="submit" class="btn btn-primary centered">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

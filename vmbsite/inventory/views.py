@@ -193,6 +193,10 @@ def uniform_rental_db(request):
 
     return render(request, "vmbsite/uniform_rental_db.html", {'rentals': rentals})
 
+@login_required()
+def import_uniform(request: HttpRequest) -> HttpResponse:
+    return render(request, "vmbsite/import_uniform.html")
+
 # Member API endpoints
 @require_POST
 def update_member(request, pk):

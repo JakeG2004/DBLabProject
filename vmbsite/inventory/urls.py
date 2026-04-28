@@ -19,6 +19,9 @@ urlpatterns = [
     path("database/instrument_db/", views.instrument_db, name="instrument_db"),
     path("database/instrument_rental_db", views.instrument_rental_db, name="instrument_rental_db"),
 
+    # CSV Import Pages
+    path("csv/uniform/", views.import_uniform, name="import_uniform"),
+
     # Member API endpoints
     path('member/update/<str:pk>/', views.update_member, name='update_member'),
     path('member/delete/<str:pk>/', views.delete_member, name='delete_member'),
