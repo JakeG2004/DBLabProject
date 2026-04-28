@@ -36,12 +36,14 @@ def logout_view(request):
     return redirect('vmb:login')
 
 # Easy access rental pages
+@login_required()
 def instrument(request):
     if(request.method == 'POST'):
         pass
 
     return render(request, "vmbsite/instrument.html")
 
+@login_required()
 def uniform(request):
     if(request.method == 'POST'):
         pass
@@ -49,12 +51,14 @@ def uniform(request):
     return render(request, "vmbsite/uniform.html")
 
 # Database pages
+@login_required()
 def database(request):
     if(request.method == 'POST'):
         pass
 
     return render(request, "vmbsite/database.html")
 
+@login_required()
 def member_db(request):
     members = Member.objects.all()
 
@@ -69,6 +73,7 @@ def member_db(request):
 
     return render(request, "vmbsite/member_db.html", {'members': members})
 
+@login_required()
 def uniform_db(request):
     uniforms = Uniform_Piece.objects.all()
 
@@ -83,6 +88,7 @@ def uniform_db(request):
 
     return render(request, "vmbsite/uniform_db.html", {'uniforms': uniforms})
 
+@login_required()
 def instrument_db(request):
     instruments = Instrument.objects.all()
 
@@ -96,6 +102,7 @@ def instrument_db(request):
 
     return render(request, "vmbsite/instrument_db.html", {'instruments': instruments})
 
+@login_required()
 def instrument_rental_db(request):
     rentals = Rents_Instrument.objects.select_related('vandal_number', 'instrument_id').all()
 
@@ -115,6 +122,7 @@ def instrument_rental_db(request):
 
     return render(request, "vmbsite/instrument_rental_db.html", {'rentals': rentals})
 
+@login_required()
 def uniform_rental_db(request):
     rentals = Rents_Uniform.objects.select_related('vandal_number', 'uniform_id').all()
 
