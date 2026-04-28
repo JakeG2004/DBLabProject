@@ -38,10 +38,26 @@ def logout_view(request):
 # Easy access rental pages
 @login_required()
 def instrument(request):
-    if(request.method == 'POST'):
-        pass
+    error = None
+    success = None
+    if request.method == 'POST':
+        vandal_number = request.POST.get('vandal_number')
+        instrument_id = request.POST.get('instrument_id')
 
-    return render(request, "vmbsite/instrument.html")
+        if not Member.objects.filter(vandal_number=vandal_number).exists():
+            error = "Member not found."
+        elif not Instrument.objects.filter(instrument_id=instrument_id).exists():
+            error = "Instrument not found."
+        elif Rents_Instrument.objects.filter(instrument_id=instrument_id).exists():
+            error = "Instrument already rented."
+        else:
+            Rents_Instrument.objects.create(
+                vandal_number_id=vandal_number,
+                instrument_id_id=instrument_id
+            )
+            success = "Instrument rented successfully."
+
+    return render(request, "vmbsite/instrument.html", {'error': error, 'success': success})
 
 @login_required()
 def uniform(request):
