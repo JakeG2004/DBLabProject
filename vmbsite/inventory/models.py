@@ -1,7 +1,4 @@
-import datetime
 from django.db import models
-from django.utils import timezone
-from django.contrib import admin
 
 class Member(models.Model):
     vandal_number = models.CharField(max_length=16, primary_key=True)
@@ -29,7 +26,13 @@ CLOTHING_CHOICES = [
         ('black_pants', 'Black Pants'),
         ('white_pants', 'White Pants')
     ]),
-    ('gauntlet', "Gauntlet")
+    ('Cape', [
+        ('cape', 'Cape'),
+    ]),
+    ('Gauntlet', [
+        ('left_gauntlet', 'Left Gauntlet'),
+        ('right_gauntlet', 'Right Gauntlet'),
+    ]),
 ]
 
 class Uniform_Piece(models.Model):

@@ -5,7 +5,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.db.models import Q
-from .models import Member, Uniform_Piece, Instrument, Rents_Uniform, Rents_Instrument
+from .models import Member, Uniform_Piece, Instrument, Rents_Uniform, Rents_Instrument, CLOTHING_CHOICES
 from .forms import SignInForm, SignUpForm
 import json
 
@@ -66,9 +66,7 @@ def uniform(request):
         if field is None or field == '':
             return None
         # Assumes the field is supplied if required in the HTML
-        # TODO: enforce clothing types
-        # if not Uniform_Piece.objects.filter(clothing_id=field, clothing_type__in=clothing_types).exists():
-        if not Uniform_Piece.objects.filter(clothing_id=field).exists():
+        if not Uniform_Piece.objects.filter(clothing_id=field, clothing_type__in=clothing_types).exists():
             errors.append(f'{inst_name} uniform piece not found.')
         elif Rents_Uniform.objects.filter(uniform_id=field).exists():
             errors.append(f'{inst_name} uniform piece already rented.')
@@ -85,11 +83,10 @@ def uniform(request):
         # Check uniform pieces
         shako_id = get_piece(errors, request, 'shako_id', ['perc_shako', 'horn_shako'], 'Shako')
         jacket_id = get_piece(errors, request, 'jacket_id', ['white_jacket', 'black_jacket', 'gritman_jacket'], 'Jacket')
-        # TODO: implement cape clothing type
-        cape_id = get_piece(errors, request, 'cape_id', ['white_jacket', 'black_jacket', 'gritman_jacket'], 'Cape')
+        cape_id = get_piece(errors, request, 'cape_id', ['cape'], 'Cape')
         pants_id = get_piece(errors, request, 'pants_id', ['skirt', 'black_pants', 'white_pants'], 'Pants/Skirt')
-        left_gauntlet_id = get_piece(errors, request, 'left_gauntlet_id', ['gauntlet'], 'Left gauntlet')
-        right_gauntlet_id = get_piece(errors, request, 'right_gauntlet_id', ['gauntlet'], 'Right gauntlet')
+        left_gauntlet_id = get_piece(errors, request, 'left_gauntlet_id', ['left_gauntlet'], 'Left gauntlet')
+        right_gauntlet_id = get_piece(errors, request, 'right_gauntlet_id', ['right_gauntlet'], 'Right gauntlet')
 
         # Rent uniform pieces
         if not errors:
@@ -139,7 +136,8 @@ def uniform_db(request):
             Q(clothing_type__icontains=query)
         )
 
-    return render(request, "vmbsite/uniform_db.html", {'uniforms': uniforms})
+    valid_types = [v for _, items in CLOTHING_CHOICES for v, _ in items]
+    return render(request, "vmbsite/uniform_db.html", {'uniforms': uniforms, 'clothing_choices': CLOTHING_CHOICES, 'valid_types': valid_types})
 
 @login_required()
 def instrument_db(request):

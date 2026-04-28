@@ -44,7 +44,7 @@
             <td>{{ rental.vandal_number.last_name }}</td>
             
             <td>{{ rental.uniform_id.clothing_id }}</td>
-            <td>{{ rental.uniform_id.clothing_type }}</td>
+            <td>{{ rental.uniform_id.get_clothing_type_display  }}</td>
             <td><button class="btn btn-danger delete-btn w-100">Delete</button></td>
         </tr>
         {% empty %}

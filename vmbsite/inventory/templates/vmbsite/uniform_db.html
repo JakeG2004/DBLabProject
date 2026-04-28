@@ -42,7 +42,22 @@
         {% for uniform in uniforms %}
         <tr data-id="{{ uniform.clothing_id }}">
             <td>{{ uniform.clothing_id }}</td>
-            <td><input type="text" class="form-control clothing-type" value="{{ uniform.clothing_type }}"></td>
+
+            <td>
+                <select class="form-control clothing-type">
+                  <option value="" disabled {% if uniform.clothing_type not in valid_types %}selected{% endif %}>
+                      Unknown ({{ uniform.clothing_type }})
+                  </option>
+                  {% for group, items in clothing_choices %}
+                      <optgroup label="{{ group }}">
+                          {% for value, label in items %}
+                              <option value="{{ value }}" {% if value == uniform.clothing_type %}selected{% endif %}>{{ label }}</option>
+                          {% endfor %}
+                      </optgroup>
+                  {% endfor %}
+              </select>
+            </td>
+
             <td><input type="text" class="form-control clothing-size" value="{{ uniform.size }}"></td>
             <td><button class="btn btn-primary update-btn w-100">Apply</button></td>
             <td><button class="btn btn-danger delete-btn w-100">Delete</button></td>
@@ -68,15 +83,18 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="uniform_type" class="form-label">Uniform Type</label>
-            <select class="form-select" id="uniform_type" name="uniform_type" required>
-              <option value="" selected disabled>Select type...</option>
-              <option value="Shako">Shako</option>
-              <option value="Jacket">Jacket</option>
-              <option value="Pants">Pants</option>
-              <option value="Skirt">Skirt</option>
-              <option value="Left Gauntlet">Left Gauntlet</option>
-              <option value="Right Gauntlet">Right Gauntlet</option>
-              <option value="Cape">Cape</option>
+
+            <select class="form-control" id="uniform_type" name="uniform_type" required>
+                <option value="" disabled selected>
+                    Choose one...
+                </option>
+                {% for group, items in clothing_choices %}
+                    <optgroup label="{{ group }}">
+                        {% for value, label in items %}
+                            <option value="{{ value }}">{{ label }}</option>
+                        {% endfor %}
+                    </optgroup>
+                {% endfor %}
             </select>
           </div>
           <div class="mb-3">
