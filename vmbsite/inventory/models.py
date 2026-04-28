@@ -13,6 +13,8 @@ class Member(models.Model):
         return full_name
 
 CLOTHING_CHOICES = [
+    # The `uniform` view relies on these possible values.
+    # Ensure the view is updated when changing the possible clothing choices.
     ('Shako', [
         ('perc_shako', 'Percussion Shako'),
         ('horn_shako', 'Horn Shako'),

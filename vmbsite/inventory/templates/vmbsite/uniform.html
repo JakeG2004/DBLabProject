@@ -6,56 +6,76 @@
 
 <div class="row">
     <div class="col-md-8 mx-auto text-center">
+        {% if errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+        {% endif %}
         <h1 class="display-4">Uniform Rental</h1>
-        <form>
-        <div class="form-group">
-            <label for="vandalNumber">Vandal #</label>
-            <input type="text" class="form-control" id="vandalNumber" placeholder="Enter Vandal Number" required>
-        </div>
-        <br>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="vandalNumber">Vandal #</label>
+                <input type="text" name="vandal_number" class="form-control" id="vandalNumber"
+                    placeholder="Enter Vandal Number" required>
+            </div>
+            <br>
 
-        <!-- Not everyone has a shako, not req'd -->
-        <div class="form-group">
-            <label for="shakoID">Shako ID</label>
-            <input type="text" class="form-control" id="shakoID" placeholder="Enter Shako ID (optional)">
-        </div>
-        <br>
-        
-        <!-- Everyone has a jacket, req'd -->
-        <div class="form-group">
-            <label for="jacketID">Jacket ID</label>
-            <input type="text" class="form-control" id="jacketID" placeholder="Enter Jacket ID" required>
-        </div>
-        <br>
+            <!-- Not everyone has a shako, not req'd -->
+            <div class="form-group">
+                <label for="shakoID">Shako ID</label>
+                <input type="text" name="shako_id" class="form-control" id="shakoID"
+                    placeholder="Enter Shako ID (optional)">
+            </div>
+            <br>
 
-        <!-- Not everyone has a cape, not req'd -->
-        <div class="form-group">
-            <label for="capeID">Cape ID</label>
-            <input type="text" class="form-control" id="capeID" placeholder="Enter Cape ID (optional)">
-        </div>
-        <br>
+            <!-- Everyone has a jacket, req'd -->
+            <div class="form-group">
+                <label for="jacketID">Jacket ID</label>
+                <input type="text" name="jacket_id" class="form-control" id="jacketID" placeholder="Enter Jacket ID"
+                    required>
+            </div>
+            <br>
 
-        <!-- Everyone has pants / skirt, req'd -->
-        <div class="form-group">
-            <label for="pantsID">Pants ID</label>
-            <input type="text" class="form-control" id="pantsID" placeholder="Enter Pants / Skirt ID" required>
-        </div>
-        <br>
-        
-        <!-- Not everyone has gauntlets, not req'd -->
-        <div class="form-group">
-            <label for="lgauntletID">Left Gauntlet ID</label>
-            <input type="text" class="form-control" id="lgauntletID" placeholder="Enter Left Gauntlet ID (optional)">
-        </div>
-        <br>
+            <!-- Not everyone has a cape, not req'd -->
+            <div class="form-group">
+                <label for="capeID">Cape ID</label>
+                <input type="text" name="cape_id" class="form-control" id="capeID"
+                    placeholder="Enter Cape ID (optional)">
+            </div>
+            <br>
 
-        <div class="form-group">
-            <label for="rgauntletIdID">Right Gauntlet ID</label>
-            <input type="text" class="form-control" id="rgauntletID" placeholder="Enter Right Gauntlet ID (optional)">
-        </div>
-        <br>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- Everyone has pants / skirt, req'd -->
+            <div class="form-group">
+                <label for="pantsID">Pants ID</label>
+                <input type="text" name="pants_id" class="form-control" id="pantsID"
+                    placeholder="Enter Pants / Skirt ID" required>
+            </div>
+            <br>
+
+            <!-- Not everyone has gauntlets, not req'd -->
+            <div class="form-group">
+                <label for="lgauntletID">Left Gauntlet ID</label>
+                <input type="text" name="left_gauntlet_id" class="form-control" id="lgauntletID"
+                    placeholder="Enter Left Gauntlet ID (optional)">
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label for="rgauntletIdID">Right Gauntlet ID</label>
+                <input type="text" name="right_gauntlet_id" class="form-control" id="rgauntletID"
+                    placeholder="Enter Right Gauntlet ID (optional)">
+            </div>
+            <br>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>
